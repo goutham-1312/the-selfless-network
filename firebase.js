@@ -272,6 +272,19 @@ const setLocalData = (key, data) => localStorage.setItem(key, JSON.stringify(dat
 // Helper to read from local storage
 const getLocalData = (key) => JSON.parse(localStorage.getItem(key)) || [];
 
+// Listeners collection for Auth in Mock Mode
+const mockAuthListeners = [];
+
+const notifyMockAuthChange = (user) => {
+    mockAuthListeners.forEach(cb => {
+        try {
+            cb(user);
+        } catch (e) {
+            console.error("Error in mock auth listener", e);
+        }
+    });
+};
+
 const mockAuthService = {
     signUp: async (email, password, name, role = "volunteer") => {
         return new Promise((resolve, reject) => {
@@ -288,6 +301,7 @@ const mockAuthService = {
                 
                 // Set current session
                 localStorage.setItem("sn_current_user", JSON.stringify(newUser));
+                notifyMockAuthChange(newUser);
                 resolve(newUser);
             }, 500);
         });
@@ -303,6 +317,7 @@ const mockAuthService = {
                     return;
                 }
                 localStorage.setItem("sn_current_user", JSON.stringify(user));
+                notifyMockAuthChange(user);
                 resolve(user);
             }, 500);
         });
@@ -312,6 +327,7 @@ const mockAuthService = {
         return new Promise((resolve) => {
             setTimeout(() => {
                 localStorage.removeItem("sn_current_user");
+                notifyMockAuthChange(null);
                 resolve();
             }, 300);
         });
@@ -323,19 +339,23 @@ const mockAuthService = {
     },
 
     onAuthStateChanged: (callback) => {
+        mockAuthListeners.push(callback);
         // Emulate listener by executing once immediately
-        const trigger = () => {
-            const user = mockAuthService.getCurrentUser();
-            callback(user);
-        };
-        trigger();
+        callback(mockAuthService.getCurrentUser());
         
         // Listen to storage changes for multi-tab auth sync
-        window.addEventListener("storage", (e) => {
+        const storageHandler = (e) => {
             if (e.key === "sn_current_user") {
-                trigger();
+                callback(mockAuthService.getCurrentUser());
             }
-        });
+        };
+        window.addEventListener("storage", storageHandler);
+        
+        return () => {
+            const idx = mockAuthListeners.indexOf(callback);
+            if (idx !== -1) mockAuthListeners.splice(idx, 1);
+            window.removeEventListener("storage", storageHandler);
+        };
     },
 
     resetPassword: async (email) => {
