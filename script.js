@@ -353,6 +353,8 @@ const initAuthModal = () => {
             // Log out user
             authService.logOut().then(() => {
                 showToast("Logged Out", "You have signed out of Selfless Network.");
+                handleAuthStateChange(null);
+                window.location.hash = "#home";
             }).catch(e => {
                 showToast("Error", "Logout failed: " + e.message, "danger");
             });
@@ -412,12 +414,13 @@ const handleAuthStateChange = async (user) => {
 
     if (user) {
         // Logged In
-        authBtnText.textContent = user.name || user.email.split("@")[0];
+        const displayName = user.name || (user.email ? user.email.split("@")[0] : "User");
+        authBtnText.textContent = displayName;
         authBtnIcon.className = "fa-solid fa-sign-out-alt";
         
         // Auto-fill forms
         const volEmail = document.getElementById("vol-email");
-        if (volEmail) volEmail.value = user.email;
+        if (volEmail) volEmail.value = user.email || "";
         
         const volFullName = document.getElementById("vol-fullname");
         if (volFullName && !volFullName.value) volFullName.value = user.name || "";
@@ -425,7 +428,7 @@ const handleAuthStateChange = async (user) => {
         // Check if user is a volunteer and retrieve their district profile
         try {
             const volunteersList = await dbService.volunteers.getAll();
-            currentVolunteerProfile = volunteersList.find(v => v.email.toLowerCase() === user.email.toLowerCase());
+            currentVolunteerProfile = volunteersList.find(v => v.email && user.email && v.email.toLowerCase() === user.email.toLowerCase());
             
             if (currentVolunteerProfile && currentVolunteerProfile.status === "approved") {
                 // Subscribe to alerts/requests in their district
@@ -652,7 +655,21 @@ const initForms = () => {
         const pass = document.getElementById("login-password").value;
 
         authService.logIn(email, pass).then(user => {
-            showToast(`Welcome Back`, `Logged in successfully as ${user.name}`);
+            const userName = user.name || (user.email ? user.email.split("@")[0] : "User");
+            showToast(`Welcome Back`, `Logged in successfully as ${userName}`);
+            
+            // Force immediate UI update
+            handleAuthStateChange(user);
+            
+            // Close popup
+            document.getElementById("auth-modal").classList.remove("active");
+            
+            // Redirect based on role
+            if (user.role === "admin") {
+                window.location.hash = "#admin";
+            } else {
+                window.location.hash = "#home";
+            }
         }).catch(err => {
             showToast("Login Failed", err.message, "danger");
         });
@@ -667,7 +684,21 @@ const initForms = () => {
         const role = document.getElementById("signup-role").value;
 
         authService.signUp(email, pass, name, role).then(user => {
-            showToast(`Registration Successful`, `Account created. Welcome ${user.name}!`);
+            const userName = user.name || name || (user.email ? user.email.split("@")[0] : "User");
+            showToast(`Registration Successful`, `Account created. Welcome ${userName}!`);
+            
+            // Force immediate UI update
+            handleAuthStateChange(user);
+            
+            // Close popup
+            document.getElementById("auth-modal").classList.remove("active");
+            
+            // Redirect based on role
+            if (user.role === "admin") {
+                window.location.hash = "#admin";
+            } else {
+                window.location.hash = "#home";
+            }
         }).catch(err => {
             showToast("Signup Failed", err.message, "danger");
         });
