@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Selfless Network - Connecting Volunteers across Tamil Nadu for humanity, environmental awareness, and emergency relief. Join us to help and grow.">
+    <title>Selfless Network | Connecting Volunteers for Humanity Tamil Nadu</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main Style Sheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Loading Animation Screen -->
+    <div class="loader-overlay" id="loader-overlay">
+        <svg class="leaf-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zM12 22V12" stroke-linecap="round"/>
+            <path d="M12 12c2.5-3.5 6-4.5 8-4-1.5 3-4 6-8 4z" fill="currentColor"/>
+            <path d="M12 12c-2.5-3.5-6-4.5-8-4 1.5 3 4 6 8 4z" fill="currentColor"/>
+        </svg>
+        <div class="loader-text">SELFLESS NETWORK</div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="nav-logo" id="logo">
+                <i class="fa-solid fa-hands-holding-child"></i>
+                <span>Selfless Network</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active" data-page="home">Home</a>
+                <a href="#about" class="nav-link" data-page="about">About</a>
+                <a href="#directory" class="nav-link" data-page="directory">Find Volunteers</a>
+                <a href="#alerts" class="nav-link" data-page="alerts">Community Alerts</a>
+                <a href="#faq" class="nav-link" data-page="faq">FAQ</a>
+                <a href="#contact" class="nav-link" data-page="contact">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Notifications Bell -->
+                <button class="nav-icon-btn" id="notif-btn" aria-label="Toggle notifications">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="badge hidden" id="notif-count">0</span>
+                </button>
+                
+                <!-- Dark Mode Toggle -->
+                <button class="nav-icon-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- Auth/User Menu Button -->
+                <button class="btn btn-primary btn-sm" id="auth-btn">
+                    <i class="fa-solid fa-user-plus"></i> <span id="auth-btn-text">Join / Log In</span>
+                </button>
+
+                <!-- Hamburger Menu for Mobile -->
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Notification Dropdown Menu -->
+    <div class="notification-dropdown" id="notification-dropdown">
+        <div class="dropdown-header">
+            <span>District Notifications</span>
+            <button class="btn-sm btn-secondary" id="mark-all-read" style="padding: 2px 6px; font-size: 11px;">Clear All</button>
+        </div>
+        <div class="dropdown-body" id="notif-dropdown-body">
+            <!-- Dynamic Notifications will load here -->
+            <div class="dropdown-item text-center" style="color: var(--color-text-muted); font-size: 13px; padding: 24px;">
+                No notifications in your district.
+            </div>
+        </div>
+        <div class="dropdown-footer">
+            <span id="current-notif-district">Region: Not Logged In</span>
+        </div>
+    </div>
+
+    <!-- MAIN APP WRAPPER -->
+    <main>
+        
+        <!-- ==================== PAGE: HOME ==================== -->
+        <section id="page-home" class="app-page active">
+            
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <!-- Decorative leaves -->
+                <svg class="organic-leaf leaf-1" viewBox="0 0 24 24"><path d="M17 8C8 10 9 21 9 21s11-3 12-11c.7-5.6-4-2-4-2z"/></svg>
+                <svg class="organic-leaf leaf-2" viewBox="0 0 24 24"><path d="M17 8C8 10 9 21 9 21s11-3 12-11c.7-5.6-4-2-4-2z"/></svg>
+                
+                <div class="container hero-grid">
+                    <div class="hero-content">
+                        <span class="hero-subtitle">Tamil Nadu Volunteer Platform</span>
+                        <h1 class="hero-title">
+                            <span>Selfless Network</span>
+                            <span class="text-gradient">Together We Help.</span>
+                            <span class="text-gradient">Together We Grow.</span>
+                        </h1>
+                        <p class="hero-description">
+                            Connecting thousands of compassionate volunteers across Tamil Nadu. Empowering community resilience, climate action, disaster response, and mutual support. Humanity first.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#register-volunteer" class="btn btn-primary" id="hero-btn-volunteer">
+                                <i class="fa-solid fa-hand-holding-heart"></i> Become a Volunteer
+                            </a>
+                            <a href="#request-help" class="btn btn-secondary" id="hero-btn-request">
+                                <i class="fa-solid fa-kit-medical"></i> Request Help
+                            </a>
+                        </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <!-- BG Graphic Circles -->
+                        <div class="bg-pattern-circles"></div>
+                        <!-- Stylized Community Illustration SVG -->
+                        <svg class="hero-svg" viewBox="0 0 500 500" fill="none">
+                            <circle cx="250" cy="250" r="180" fill="var(--color-primary-light)" opacity="0.4"/>
+                            <!-- Helping Hands graphic nodes -->
+                            <g class="float-element">
+                                <path d="M250 80 c-20 0-30 20-30 40 s10 40 30 40 s30-20 30-40 s-10-40-30-40z" fill="hsl(145, 60%, 45%)" opacity="0.8"/>
+                                <path d="M220 180 h60 l20 80 h-100z" fill="hsl(145, 55%, 35%)"/>
+                                <path d="M250 120 c-10 0-15 10-15 20 s5 20 15 20 s15-10 15-20 s-5-20-15-20z" fill="#fff"/>
+                            </g>
+                            <g class="float-element-delay" transform="translate(-100, 100)">
+                                <path d="M250 80 c-20 0-30 20-30 40 s10 40 30 40 s30-20 30-40 s-10-40-30-40z" fill="var(--color-accent)" opacity="0.8"/>
+                                <path d="M220 180 h60 l20 80 h-100z" fill="hsl(24, 80%, 45%)"/>
+                                <path d="M250 120 c-10 0-15 10-15 20 s5 20 15 20 s15-10 15-20 s-5-20-15-20z" fill="#fff"/>
+                            </g>
+                            <g class="float-element" transform="translate(100, 100)">
+                                <path d="M250 80 c-20 0-30 20-30 40 s10 40 30 40 s30-20 30-40 s-10-40-30-40z" fill="var(--color-info)" opacity="0.8"/>
+                                <path d="M220 180 h60 l20 80 h-100z" fill="hsl(200, 75%, 35%)"/>
+                                <path d="M250 120 c-10 0-15 10-15 20 s5 20 15 20 s15-10 15-20 s-5-20-15-20z" fill="#fff"/>
+                            </g>
+                            <!-- Connection Lines -->
+                            <line x1="250" y1="210" x2="150" y2="310" stroke="var(--color-primary)" stroke-width="3" stroke-dasharray="8 4"/>
+                            <line x1="250" y1="210" x2="350" y2="310" stroke="var(--color-primary)" stroke-width="3" stroke-dasharray="8 4"/>
+                            <line x1="150" y1="310" x2="350" y2="310" stroke="var(--color-primary)" stroke-width="2" stroke-dasharray="5 5"/>
+                            <!-- Sprout leaf central representation -->
+                            <path d="M250 240 c-10-20-30-20-40-10 c0 15 15 30 40 40 c25-10 40-25 40-40 c-10-10-30-10-40 10z" fill="var(--color-primary)"/>
+                            <circle cx="250" cy="270" r="8" fill="var(--color-secondary)"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Counters Bar -->
+            <div class="stats-section">
+                <div class="container stats-grid">
+                    <div class="stat-card">
+                        <i class="fa-solid fa-users-line stat-icon"></i>
+                        <div class="stat-number" id="stat-volunteers" data-target="1840">0</div>
+                        <div class="stat-label">Registered Volunteers</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-map-location-dot stat-icon"></i>
+                        <div class="stat-number" id="stat-districts" data-target="38">0</div>
+                        <div class="stat-label">Districts Covered</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-circle-exclamation stat-icon" style="color: var(--color-accent);"></i>
+                        <div class="stat-number" id="stat-requests" data-target="42">0</div>
+                        <div class="stat-label">Active Requests</div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fa-solid fa-award stat-icon"></i>
+                        <div class="stat-number" id="stat-supports" data-target="965">0</div>
+                        <div class="stat-label">Successful Supports</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Tamil Nadu District Map Section -->
+            <div class="map-section section-padding">
+                <div class="container">
+                    <div class="text-center" style="margin-bottom: 50px;">
+                        <h2 style="font-size: 32px; margin-bottom: 12px;">District-Wise Network Map</h2>
+                        <p style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">
+                            Click on a region on the Tamil Nadu map to view local volunteer density and filter listings directly.
+                        </p>
+                    </div>
+                    
+                    <div class="map-container">
+                        <!-- Stylized Interactive Map -->
+                        <div class="map-visual-wrapper">
+                            <svg class="tn-svg-map" viewBox="0 0 500 550" id="tn-svg-map">
+                                <!-- Chennai & North -->
+                                <circle cx="430" cy="40" r="16" class="district-path" data-name="Chennai" id="map-chennai"/>
+                                <text x="430" y="44" font-size="8" font-weight="700" text-anchor="middle" fill="var(--color-text-primary)" pointer-events="none">MAS</text>
+                                
+                                <polygon points="360,30 410,20 440,30 420,60 380,50" class="district-path" data-name="Tiruvallur"/>
+                                <text x="395" y="42" font-size="8" text-anchor="middle" pointer-events="none">TLR</text>
+
+                                <polygon points="370,60 410,60 430,80 400,100 360,80" class="district-path" data-name="Kanchipuram"/>
+                                <text x="395" y="80" font-size="8" text-anchor="middle" pointer-events="none">KPM</text>
+
+                                <polygon points="410,90 440,80 450,110 420,130 390,110" class="district-path" data-name="Chengalpattu"/>
+                                <text x="420" y="110" font-size="8" text-anchor="middle" pointer-events="none">CPT</text>
+
+                                <polygon points="300,50 350,40 370,70 330,80 290,70" class="district-path" data-name="Vellore"/>
+                                <text x="330" y="65" font-size="8" text-anchor="middle" pointer-events="none">VEL</text>
+
+                                <polygon points="350,75 380,75 390,95 360,105 340,95" class="district-path" data-name="Ranipet"/>
+                                <text x="365" y="90" font-size="7" text-anchor="middle" pointer-events="none">RPT</text>
+
+                                <polygon points="270,80 300,80 320,110 290,120" class="district-path" data-name="Tirupathur"/>
+                                <text x="295" y="100" font-size="7" text-anchor="middle" pointer-events="none">TPR</text>
+
+                                <polygon points="320,115 360,105 380,130 350,160 310,140" class="district-path" data-name="Thiruvannamalai"/>
+                                <text x="345" y="135" font-size="8" text-anchor="middle" pointer-events="none">TVM</text>
+
+                                <polygon points="360,165 400,145 420,180 380,200 340,190" class="district-path" data-name="Villupuram"/>
+                                <text x="380" y="175" font-size="8" text-anchor="middle" pointer-events="none">VPM</text>
+
+                                <polygon points="290,160 330,150 350,185 310,200 270,180" class="district-path" data-name="Kallakurichi"/>
+                                <text x="310" y="175" font-size="8" text-anchor="middle" pointer-events="none">KKI</text>
+
+                                <polygon points="390,205 430,190 440,220 410,240 370,225" class="district-path" data-name="Cuddalore"/>
+                                <text x="405" y="220" font-size="8" text-anchor="middle" pointer-events="none">CUD</text>
+
+                                <!-- West & Salem -->
+                                <polygon points="210,90 260,85 270,115 230,130 200,110" class="district-path" data-name="Krishnagiri"/>
+                                <text x="235" y="110" font-size="8" text-anchor="middle" pointer-events="none">KGI</text>
+
+                                <polygon points="220,135 260,130 280,160 240,170 210,150" class="district-path" data-name="Dharmapuri"/>
+                                <text x="240" y="150" font-size="8" text-anchor="middle" pointer-events="none">DPI</text>
+
+                                <polygon points="250,175 295,170 300,210 260,220 230,200" class="district-path" data-name="Salem"/>
+                                <text x="270" y="195" font-size="8" text-anchor="middle" pointer-events="none">SLM</text>
+
+                                <polygon points="265,225 310,215 310,250 280,260 250,240" class="district-path" data-name="Namakkal"/>
+                                <text x="285" y="240" font-size="8" text-anchor="middle" pointer-events="none">NKL</text>
+
+                                <polygon points="170,170 210,160 230,210 190,230 160,200" class="district-path" data-name="Erode"/>
+                                <text x="195" y="195" font-size="8" text-anchor="middle" pointer-events="none">ERD</text>
+
+                                <circle cx="110" cy="180" r="16" class="district-path" data-name="Nilgiris"/>
+                                <text x="110" y="184" font-size="8" text-anchor="middle" pointer-events="none">NLG</text>
+
+                                <polygon points="120,220 160,210 170,270 130,280 100,250" class="district-path" data-name="Coimbatore" id="map-coimbatore"/>
+                                <text x="135" y="245" font-size="8" font-weight="700" text-anchor="middle" pointer-events="none">CBE</text>
+
+                                <polygon points="175,235 225,225 240,265 210,285 160,275" class="district-path" data-name="Tiruppur"/>
+                                <text x="200" y="255" font-size="8" text-anchor="middle" pointer-events="none">TPR</text>
+
+                                <!-- Central & Delta -->
+                                <polygon points="230,280 270,270 280,305 250,320 220,300" class="district-path" data-name="Karur"/>
+                                <text x="250" y="295" font-size="8" text-anchor="middle" pointer-events="none">KRR</text>
+
+                                <polygon points="280,265 330,255 350,295 300,310 270,295" class="district-path" data-name="Trichy" id="map-trichy"/>
+                                <text x="305" y="285" font-size="8" font-weight="700" text-anchor="middle" pointer-events="none">TRY</text>
+
+                                <polygon points="315,200 345,190 355,220 325,230" class="district-path" data-name="Perambalur"/>
+                                <text x="330" y="215" font-size="7" text-anchor="middle" pointer-events="none">PBL</text>
+
+                                <polygon points="345,215 375,205 385,235 355,245" class="district-path" data-name="Ariyalur"/>
+                                <text x="365" y="230" font-size="7" text-anchor="middle" pointer-events="none">ALR</text>
+
+                                <polygon points="305,315 365,305 375,355 325,370 295,340" class="district-path" data-name="Pudukkottai"/>
+                                <text x="335" y="340" font-size="8" text-anchor="middle" pointer-events="none">PKT</text>
+
+                                <polygon points="360,250 410,240 430,270 395,295 350,280" class="district-path" data-name="Thanjavur"/>
+                                <text x="390" y="270" font-size="8" text-anchor="middle" pointer-events="none">TNJ</text>
+
+                                <polygon points="415,280 445,275 450,305 420,310" class="district-path" data-name="Tiruvarur"/>
+                                <text x="430" y="295" font-size="7" text-anchor="middle" pointer-events="none">TVR</text>
+
+                                <polygon points="445,245 470,240 465,295 445,295" class="district-path" data-name="Nagapattinam"/>
+                                <text x="455" y="265" font-size="7" text-anchor="middle" pointer-events="none">NGP</text>
+
+                                <polygon points="415,245 440,235 450,265 425,270" class="district-path" data-name="Mayiladuthurai"/>
+                                <text x="430" y="255" font-size="7" text-anchor="middle" pointer-events="none">MYD</text>
+
+                                <!-- South -->
+                                <polygon points="175,290 220,290 240,335 190,360 160,330" class="district-path" data-name="Dindigul"/>
+                                <text x="195" y="325" font-size="8" text-anchor="middle" pointer-events="none">DGL</text>
+
+                                <polygon points="120,315 165,305 180,345 140,365 110,345" class="district-path" data-name="Theni"/>
+                                <text x="145" y="340" font-size="8" text-anchor="middle" pointer-events="none">TNI</text>
+
+                                <polygon points="185,355 235,345 250,385 210,395 175,375" class="district-path" data-name="Madurai" id="map-madurai"/>
+                                <text x="210" y="375" font-size="8" font-weight="700" text-anchor="middle" pointer-events="none">MDU</text>
+
+                                <polygon points="245,340 290,330 305,375 270,395 235,375" class="district-path" data-name="Sivagangai"/>
+                                <text x="270" y="365" font-size="8" text-anchor="middle" pointer-events="none">SVG</text>
+
+                                <polygon points="280,395 330,375 365,410 320,430 270,410" class="district-path" data-name="Ramanathapuram"/>
+                                <text x="315" y="405" font-size="8" text-anchor="middle" pointer-events="none">RAM</text>
+
+                                <polygon points="160,380 205,385 215,425 180,435 145,415" class="district-path" data-name="Virudhunagar"/>
+                                <text x="185" y="410" font-size="8" text-anchor="middle" pointer-events="none">VDG</text>
+
+                                <polygon points="100,425 145,420 155,465 125,475 90,455" class="district-path" data-name="Tenkasi"/>
+                                <text x="120" y="450" font-size="8" text-anchor="middle" pointer-events="none">TKS</text>
+
+                                <polygon points="140,460 185,450 200,505 160,520 120,490" class="district-path" data-name="Tirunelveli"/>
+                                <text x="160" y="485" font-size="8" text-anchor="middle" pointer-events="none">TNV</text>
+
+                                <polygon points="190,445 235,435 250,495 210,505 180,480" class="district-path" data-name="Thoothukudi"/>
+                                <text x="215" y="470" font-size="8" text-anchor="middle" pointer-events="none">TUT</text>
+
+                                <circle cx="130" cy="515" r="14" class="district-path" data-name="Kanyakumari"/>
+                                <text x="130" y="518" font-size="7" text-anchor="middle" pointer-events="none">KK</text>
+                            </svg>
+                        </div>
+                        
+                        <!-- Map Info Panel -->
+                        <div class="map-info-panel" id="map-info-panel">
+                            <div class="map-info-header">
+                                <h3 id="map-district-name">Tamil Nadu</h3>
+                                <p style="font-size: 13px; color: var(--color-text-muted);">Regional Network Statistics</p>
+                            </div>
+                            <div class="map-info-body">
+                                <div class="map-stat-row">
+                                    <span class="map-stat-label"><i class="fa-solid fa-users" style="color: var(--color-primary); margin-right: 6px;"></i> Active Volunteers:</span>
+                                    <span class="map-stat-val" id="map-vol-count">Select a district</span>
+                                </div>
+                                <div class="map-stat-row">
+                                    <span class="map-stat-label"><i class="fa-solid fa-circle-exclamation" style="color: var(--color-accent); margin-right: 6px;"></i> Help Requests:</span>
+                                    <span class="map-stat-val" id="map-req-count">Select a district</span>
+                                </div>
+                                <div class="map-stat-row">
+                                    <span class="map-stat-label"><i class="fa-solid fa-triangle-exclamation" style="color: var(--color-warning); margin-right: 6px;"></i> Verified Alerts:</span>
+                                    <span class="map-stat-val" id="map-alert-count">Select a district</span>
+                                </div>
+                                <button class="btn btn-secondary btn-sm" id="map-filter-btn" style="margin-top: 10px;" disabled>
+                                    View Volunteers in this District
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Stories Carousel & FAQ Section -->
+            <div class="stories-section section-padding bg-light">
+                <div class="container">
+                    <div class="text-center" style="margin-bottom: 50px;">
+                        <h2 style="font-size: 32px; margin-bottom: 12px;">Humanity In Action</h2>
+                        <p style="color: var(--color-text-secondary);">Real impact stories from volunteers across our network.</p>
+                    </div>
+                    <div class="stories-grid">
+                        <div class="story-card">
+                            <div class="story-image-placeholder"><i class="fa-solid fa-cloud-showers-heavy"></i></div>
+                            <div class="story-body">
+                                <h4 class="story-title">Chennai Flood Rescue</h4>
+                                <p class="story-text">During the recent heavy downpour, 24 volunteers in Velachery coordinated with local authorities to deliver food packets and rescue 40 stranded senior citizens.</p>
+                            </div>
+                        </div>
+                        <div class="story-card">
+                            <div class="story-image-placeholder"><i class="fa-solid fa-seedling"></i></div>
+                            <div class="story-body">
+                                <h4 class="story-title">Coimbatore Green Belt Drive</h4>
+                                <p class="story-text">Volunteers planted 500 indigenous tree saplings along the Noyyal river banks and cleared 200kg of plastic wastes in a single morning cleanup activity.</p>
+                            </div>
+                        </div>
+                        <div class="story-card">
+                            <div class="story-image-placeholder"><i class="fa-solid fa-droplet"></i></div>
+                            <div class="story-body">
+                                <h4 class="story-title">Emergency Blood Drive</h4>
+                                <p class="story-text">A critical O-negative alert was verified in Madurai. Within 25 minutes, three registered volunteers matching the query arrived at the hospital to donate.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+
+        <!-- ==================== PAGE: ABOUT ==================== -->
+        <section id="page-about" class="app-page section-padding">
+            <div class="container" style="max-width: 800px;">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 class="text-gradient" style="font-size: 40px; margin-bottom: 12px;">Our Mission & Vision</h2>
+                    <p style="color: var(--color-text-secondary);">Selfless Network – connecting hearts, hands, and hope.</p>
+                </div>
+                <div class="form-card" style="font-size: 16px; color: var(--color-text-secondary); line-height: 1.8;">
+                    <p style="margin-bottom: 20px;">
+                        <strong>Selfless Network</strong> is an open-source, non-profit community initiative born out of the necessity for unified, real-time civic mobilization in Tamil Nadu. Our platform bridges the gap between those who want to serve and those in urgent need of humanitarian support.
+                    </p>
+                    <h3 style="color: var(--color-text-primary); margin: 30px 0 15px;">What We Believe In</h3>
+                    <ul style="margin-left: 20px; margin-bottom: 20px; display: flex; flex-direction: column; gap: 12px;">
+                        <li><strong>Humanity First:</strong> Kindness transcends all boundaries. We support social actions that promote equality and empathy.</li>
+                        <li><strong>Environmental Awareness:</strong> A green planet is essential for healthy communities. We promote tree planting, plastic cleanups, and organic restoration.</li>
+                        <li><strong>Disaster Readiness:</strong> Empowering local citizens to react instantly during floods, fires, water scarcity, or health crises before institutional relief arrives.</li>
+                    </ul>
+                    <h3 style="color: var(--color-text-primary); margin: 30px 0 15px;">Tamil Nadu Coverage</h3>
+                    <p>
+                        Our platform supports all 38 districts of Tamil Nadu, enabling granular location matchings based on Taluk and Village level directories. By routing alerts and notifications locally, we ensure help is fast, verified, and responsible.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE: BECOME A VOLUNTEER ==================== -->
+        <section id="page-register-volunteer" class="app-page section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 style="font-size: 36px; margin-bottom: 12px;">Join the Humanity Network</h2>
+                    <p style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">
+                        Register to share your skills and availability. Rest assured, only the details you authorize will be visible to the public.
+                    </p>
+                </div>
+
+                <div class="form-card">
+                    <form id="volunteer-registration-form">
+                        <div class="form-grid">
+                            <!-- Full Name -->
+                            <div class="form-group">
+                                <label for="vol-fullname">Full Name *</label>
+                                <input type="text" id="vol-fullname" class="form-control" placeholder="E.g., Goutham M" required>
+                            </div>
+                            
+                            <!-- Age -->
+                            <div class="form-group">
+                                <label for="vol-age">Age *</label>
+                                <input type="number" id="vol-age" class="form-control" min="15" max="100" placeholder="E.g., 21" required>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="form-group">
+                                <label for="vol-gender">Gender *</label>
+                                <select id="vol-gender" class="form-control" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <!-- Phone Number -->
+                            <div class="form-group">
+                                <label for="vol-phone">Phone Number *</label>
+                                <input type="tel" id="vol-phone" class="form-control" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="vol-email">Email Address *</label>
+                                <input type="email" id="vol-email" class="form-control" placeholder="john@example.com" required readonly>
+                                <span style="font-size: 11px; color: var(--color-text-muted);">Synced from your account email.</span>
+                            </div>
+
+                            <!-- District -->
+                            <div class="form-group">
+                                <label for="vol-district">District (Tamil Nadu) *</label>
+                                <select id="vol-district" class="form-control" required>
+                                    <option value="">Select District</option>
+                                    <!-- Dynamic list of districts will be injected by script.js -->
+                                </select>
+                            </div>
+
+                            <!-- Taluk -->
+                            <div class="form-group">
+                                <label for="vol-taluk">Taluk *</label>
+                                <select id="vol-taluk" class="form-control" required disabled>
+                                    <option value="">Select Taluk (Choose District first)</option>
+                                </select>
+                            </div>
+
+                            <!-- Village / Town -->
+                            <div class="form-group">
+                                <label for="vol-village">Village / Town / Area *</label>
+                                <input type="text" id="vol-village" class="form-control" placeholder="E.g., Adyar / Gandhinagar" required>
+                            </div>
+
+                            <!-- Emergency Contact -->
+                            <div class="form-group form-grid-full">
+                                <label for="vol-emergency">Emergency Contact Details (Name & Phone) *</label>
+                                <input type="text" id="vol-emergency" class="form-control" placeholder="E.g., Raja (Father) - 9876543210" required>
+                            </div>
+
+                            <!-- Languages Known -->
+                            <div class="form-group form-grid-full checkbox-group">
+                                <label>Languages Known *</label>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-lang" value="Tamil" checked> Tamil</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-lang" value="English"> English</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-lang" value="Hindi"> Hindi</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-lang" value="Malayalam"> Malayalam</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-lang" value="Telugu"> Telugu</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-lang" value="Kannada"> Kannada</label>
+                                </div>
+                            </div>
+
+                            <!-- Available Days -->
+                            <div class="form-group form-grid-full checkbox-group">
+                                <label>Available Days *</label>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Monday"> Monday</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Tuesday"> Tuesday</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Wednesday"> Wednesday</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Thursday"> Thursday</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Friday"> Friday</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Saturday" checked> Saturday</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Sunday" checked> Sunday</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-days" value="Emergency Alerts"> Emergency Alerts</label>
+                                </div>
+                            </div>
+
+                            <!-- Skills -->
+                            <div class="form-group form-grid-full checkbox-group">
+                                <label>Skills & Specializations *</label>
+                                <div class="checkbox-grid">
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="First Aid"> First Aid / CPR</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Medical Assistance"> Medical Assistance</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Rescue Operations"> Rescue Operations</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Disaster Relief Packing"> Relief Packing</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Food Distribution"> Food Distribution</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Blood Donation"> Blood Donation</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Teaching & Guiding"> Teaching & Guiding</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Logistics & Transport"> Logistics & Transport</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Environmental Cleanup"> Environmental cleanup</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Animal Rescue"> Animal Welfare</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="Counseling"> Counseling / Support</label>
+                                    <label class="checkbox-label"><input type="checkbox" name="vol-skills" value="IT Support"> IT & Communication</label>
+                                </div>
+                            </div>
+
+                            <!-- Short Introduction -->
+                            <div class="form-group form-grid-full">
+                                <label for="vol-intro">Short Introduction / Bio *</label>
+                                <textarea id="vol-intro" rows="4" class="form-control" placeholder="Introduce yourself, why you want to volunteer, and any relevant experiences..." required></textarea>
+                            </div>
+
+                            <!-- User Public Display Checkboxes -->
+                            <div class="form-group form-grid-full">
+                                <label class="checkbox-label" style="font-weight: 700; margin-top: 10px;">
+                                    <input type="checkbox" id="vol-share-public" checked> 
+                                    I agree to share my name, district, skills, and availability publicly on the directory. (Email and contact number will remain hidden to prevent spam).
+                                </label>
+                                <label class="checkbox-label" style="font-weight: 700; margin-top: 5px;">
+                                    <input type="checkbox" id="vol-agree-terms" required> 
+                                    I agree to volunteer responsibly, maintain kindness, and support communities safely. *
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary" id="submit-volunteer">
+                                <i class="fa-solid fa-paper-plane"></i> Register as Volunteer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE: FIND VOLUNTEERS ==================== -->
+        <section id="page-directory" class="app-page section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 style="font-size: 36px; margin-bottom: 12px;">Volunteer Directory</h2>
+                    <p style="color: var(--color-text-secondary);">Search and connect with approved volunteers across Tamil Nadu.</p>
+                </div>
+
+                <!-- Directory Search filters -->
+                <div class="search-filter-card">
+                    <div class="filter-grid">
+                        <div class="form-group">
+                            <label for="filter-district">District</label>
+                            <select id="filter-district" class="form-control">
+                                <option value="">All Districts</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-taluk">Taluk (Optional)</label>
+                            <input type="text" id="filter-taluk" class="form-control" placeholder="Search Taluk">
+                        </div>
+                        <div class="form-group">
+                            <label for="filter-skill">Skill Filter</label>
+                            <select id="filter-skill" class="form-control">
+                                <option value="">All Skills</option>
+                                <option value="First Aid">First Aid / CPR</option>
+                                <option value="Medical Assistance">Medical Assistance</option>
+                                <option value="Rescue Operations">Rescue Operations</option>
+                                <option value="Disaster Relief Packing">Relief Packing</option>
+                                <option value="Food Distribution">Food Distribution</option>
+                                <option value="Blood Donation">Blood Donation</option>
+                                <option value="Teaching & Guiding">Teaching & Guiding</option>
+                                <option value="Logistics & Transport">Logistics & Transport</option>
+                                <option value="Environmental Cleanup">Environmental cleanup</option>
+                                <option value="Animal Rescue">Animal Welfare</option>
+                                <option value="Counseling">Counseling</option>
+                                <option value="IT Support">IT & Communication</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" id="btn-search-directory">
+                            <i class="fa-solid fa-magnifying-glass"></i> Search
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Volunteers Grid -->
+                <div class="directory-grid" id="directory-volunteers-list">
+                    <!-- Dynamic volunteer cards injected here -->
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE: REQUEST HELP ==================== -->
+        <section id="page-request-help" class="app-page section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 style="font-size: 36px; margin-bottom: 12px;">Submit a Help Request</h2>
+                    <p style="color: var(--color-text-secondary); max-width: 600px; margin: 0 auto;">
+                        If you or your community need support with medical items, relief materials, logistics, or cleanups, submit your request here. Volunteers nearby will be alerted.
+                    </p>
+                </div>
+
+                <div class="form-card">
+                    <form id="help-request-form">
+                        <div class="form-grid">
+                            <!-- Contact Name -->
+                            <div class="form-group">
+                                <label for="req-name">Contact Person Name *</label>
+                                <input type="text" id="req-name" class="form-control" placeholder="E.g., Sundaram S" required>
+                            </div>
+                            
+                            <!-- Contact Number -->
+                            <div class="form-group">
+                                <label for="req-contact">Contact Phone Number *</label>
+                                <input type="tel" id="req-contact" class="form-control" pattern="[0-9]{10}" placeholder="10-digit mobile number" required>
+                            </div>
+
+                            <!-- District -->
+                            <div class="form-group">
+                                <label for="req-district">District *</label>
+                                <select id="req-district" class="form-control" required>
+                                    <option value="">Select District</option>
+                                </select>
+                            </div>
+
+                            <!-- Taluk -->
+                            <div class="form-group">
+                                <label for="req-taluk">Taluk *</label>
+                                <select id="req-taluk" class="form-control" required disabled>
+                                    <option value="">Select Taluk (Choose District first)</option>
+                                </select>
+                            </div>
+
+                            <!-- Specific Location -->
+                            <div class="form-group form-grid-full">
+                                <label for="req-location">Location Address / Landmark *</label>
+                                <input type="text" id="req-location" class="form-control" placeholder="E.g., Near Kapaleeshwarar Temple, Mylapore" required>
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-group">
+                                <label for="req-category">Support Category *</label>
+                                <select id="req-category" class="form-control" required>
+                                    <option value="">Select Category</option>
+                                    <option value="Medical Assistance Needed">Medical Assistance Needed</option>
+                                    <option value="Food & Relief Materials">Food & Relief Materials</option>
+                                    <option value="Rescue Operations Needed">Rescue Operations Needed</option>
+                                    <option value="Blood Donation Needed">Blood Donation Needed</option>
+                                    <option value="Road Block / Debris Clearance">Road Block / Debris Clearance</option>
+                                    <option value="Community Service Activity">Community Service Activity</option>
+                                    <option value="Other Humanitarian Needs">Other Humanitarian Needs</option>
+                                </select>
+                            </div>
+
+                            <!-- Urgency Level -->
+                            <div class="form-group">
+                                <label for="req-urgency">Urgency Level *</label>
+                                <select id="req-urgency" class="form-control" required>
+                                    <option value="">Select Urgency</option>
+                                    <option value="Low">Low (General activity / Planning ahead)</option>
+                                    <option value="Medium">Medium (Needs attention within 48 hours)</option>
+                                    <option value="High">High (Immediate attention needed within 24 hours)</option>
+                                    <option value="Critical">Critical (Life-threatening emergency / Disaster rescue)</option>
+                                </select>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="form-group form-grid-full">
+                                <label for="req-desc">Detailed Description *</label>
+                                <textarea id="req-desc" rows="5" class="form-control" placeholder="Describe what help is needed, number of people affected, and any specific items required..." required></textarea>
+                            </div>
+                            
+                            <!-- Optional Image input -->
+                            <div class="form-group form-grid-full">
+                                <label for="req-image">Attach Image (Optional)</label>
+                                <input type="file" id="req-image" class="form-control" accept="image/*" style="padding: 8px;">
+                                <span style="font-size: 11px; color: var(--color-text-muted);">Provide a photo to verify location conditions.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary" id="submit-request" style="background-color: var(--color-accent);">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Submit Help Request
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Active Help Requests Feed -->
+                <div style="margin-top: 70px;">
+                    <h3 style="font-size: 26px; margin-bottom: 30px; text-align: center;">Active Help Requests</h3>
+                    <div class="request-list-wrapper" id="active-requests-feed">
+                        <!-- Dynamic help requests will populate here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE: COMMUNITY ALERTS ==================== -->
+        <section id="page-alerts" class="app-page section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 style="font-size: 36px; margin-bottom: 12px;">Community Alerts Board</h2>
+                    <p style="color: var(--color-text-secondary);">Real-time localized hazard, medical, and community service updates.</p>
+                </div>
+
+                <div class="alert-layout">
+                    
+                    <!-- Left Column: Active Timeline -->
+                    <div>
+                        <h3 style="font-size: 22px; margin-bottom: 24px;"><i class="fa-solid fa-clock-rotate-left"></i> Alerts Feed</h3>
+                        <div class="alerts-timeline" id="alerts-timeline-container">
+                            <!-- Dynamic alert timeline nodes populated here -->
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Publish Alert Form -->
+                    <div>
+                        <div class="form-card" style="padding: 24px; position: sticky; top: 100px; width: 100%;">
+                            <h3 style="font-size: 20px; margin-bottom: 18px; color: var(--color-primary);"><i class="fa-solid fa-bullhorn"></i> Publish Alert</h3>
+                            <form id="community-alert-form">
+                                <div class="form-group" style="margin-bottom: 16px;">
+                                    <label for="alert-title">Alert Headline *</label>
+                                    <input type="text" id="alert-title" class="form-control" placeholder="E.g., Road Block due to Tree Fall" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 16px;">
+                                    <label for="alert-category">Alert Category *</label>
+                                    <select id="alert-category" class="form-control" required>
+                                        <option value="">Select Alert Category</option>
+                                        <option value="Flood">Flood / Water Logging</option>
+                                        <option value="Fire">Fire Accident</option>
+                                        <option value="Missing Person">Missing Person</option>
+                                        <option value="Blood Donation Needed">Blood Donation Needed</option>
+                                        <option value="Road Block">Road Block / Bridge Damage</option>
+                                        <option value="Medical Assistance Needed">Medical Assistance Needed</option>
+                                        <option value="Community Service Activity">Community Service Activity</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 16px;">
+                                    <label for="alert-district">District *</label>
+                                    <select id="alert-district" class="form-control" required>
+                                        <option value="">Select District</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 16px;">
+                                    <label for="alert-taluk">Taluk *</label>
+                                    <select id="alert-taluk" class="form-control" required disabled>
+                                        <option value="">Select Taluk (Choose District first)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 16px;">
+                                    <label for="alert-location">Specific Area / Landmark *</label>
+                                    <input type="text" id="alert-location" class="form-control" placeholder="E.g., Ooty Main Road near Kallar" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 20px;">
+                                    <label for="alert-desc">Description & Status *</label>
+                                    <textarea id="alert-desc" rows="4" class="form-control" placeholder="Provide details. E.g., Forest department has been notified, traffic is backed up..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-block">
+                                    <i class="fa-solid fa-paper-plane"></i> Publish Alert
+                                </button>
+                                <p style="font-size: 11px; color: var(--color-text-muted); margin-top: 8px; text-align: center;">
+                                    Alerts will appear as "Pending Verification" until checked by administrators.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE: FAQ ==================== -->
+        <section id="page-faq" class="app-page section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 50px;">
+                    <h2 style="font-size: 36px; margin-bottom: 12px;">Frequently Asked Questions</h2>
+                    <p style="color: var(--color-text-secondary);">Find answers to common queries about Selfless Network.</p>
+                </div>
+                
+                <div class="faq-wrapper">
+                    <div class="faq-item">
+                        <div class="faq-question">How does volunteer matching work? <i class="fa-solid fa-chevron-down"></i></div>
+                        <div class="faq-answer">When a user submits a help request or a verified community alert is posted, volunteers registered in the exact same district are instantly notified inside the website. In the future, we will roll out SMS and WhatsApp integrations for real-time offline alerts.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Is my personal contact details visible to anyone? <i class="fa-solid fa-chevron-down"></i></div>
+                        <div class="faq-answer">No. To prevent spam and maintain privacy, your telephone number and email address are never displayed on the public Volunteer Directory. Registered users can only contact you via an anonymous click-to-contact routing or once you accept a help ticket.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What does "Pending Verification" mean on alerts? <i class="fa-solid fa-chevron-down"></i></div>
+                        <div class="faq-answer">To prevent fake news or duplicate reports, all community alerts submitted by the public are queued. Administrators verify them using local contact networks before marking them as "Verified" and broadcasting them to local volunteers.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How can I become an Administrator? <i class="fa-solid fa-chevron-down"></i></div>
+                        <div class="faq-answer">Admin roles are reserved for NGO coordinators, government emergency representatives, and vetted community leads. If you represent an organization, contact us directly via the contact page with your request.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE: CONTACT ==================== -->
+        <section id="page-contact" class="app-page section-padding">
+            <div class="container" style="max-width: 800px;">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 style="font-size: 36px; margin-bottom: 12px;">Get In Touch</h2>
+                    <p style="color: var(--color-text-secondary);">Reach out to the developers or suggest platform improvements.</p>
+                </div>
+                <div class="form-card">
+                    <form id="general-contact-form">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" class="form-control" placeholder="yourname@gmail.com" required>
+                            </div>
+                            <div class="form-group form-grid-full">
+                                <label for="contact-msg">Message</label>
+                                <textarea id="contact-msg" rows="5" class="form-control" placeholder="Describe your feedback, request, or proposal..." required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-paper-plane"></i> Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==================== PAGE: ADMIN PANEL ==================== -->
+        <section id="page-admin" class="app-page section-padding">
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 40px;">
+                    <h2 class="text-gradient" style="font-size: 36px; margin-bottom: 8px;">Admin Control Panel</h2>
+                    <p style="color: var(--color-text-secondary);">Manage users, verify reports, check database logs, and view statistics.</p>
+                </div>
+
+                <div class="admin-grid" id="admin-panel-container">
+                    
+                    <!-- Sidebar menu -->
+                    <div class="admin-sidebar">
+                        <div class="admin-menu-link active" data-tab="dashboard">
+                            <i class="fa-solid fa-chart-line"></i> Dashboard Stats
+                        </div>
+                        <div class="admin-menu-link" data-tab="volunteers">
+                            <i class="fa-solid fa-users-gear"></i> Approve Volunteers
+                        </div>
+                        <div class="admin-menu-link" data-tab="alerts">
+                            <i class="fa-solid fa-bell-concierge"></i> Verify Alerts
+                        </div>
+                        <div class="admin-menu-link" data-tab="requests">
+                            <i class="fa-solid fa-handshake-angle"></i> Manage Requests
+                        </div>
+                    </div>
+
+                    <!-- Main Content Area -->
+                    <div class="admin-content-area">
+                        
+                        <!-- TAB: DASHBOARD STATS -->
+                        <div class="admin-dashboard-view active" id="admin-view-dashboard">
+                            <h3 style="margin-bottom: 24px;">Network Operations</h3>
+                            <div class="admin-stats-summary">
+                                <div class="admin-stat-box">
+                                    <div class="admin-stat-icon"><i class="fa-solid fa-user-check"></i></div>
+                                    <div class="admin-stat-vals">
+                                        <h5>Approved Volunteers</h5>
+                                        <div id="admin-stat-vols-count">0</div>
+                                    </div>
+                                </div>
+                                <div class="admin-stat-box">
+                                    <div class="admin-stat-icon" style="background-color: var(--color-accent-light); color: var(--color-accent);"><i class="fa-solid fa-circle-exclamation"></i></div>
+                                    <div class="admin-stat-vals">
+                                        <h5>Active Request Tickets</h5>
+                                        <div id="admin-stat-reqs-count">0</div>
+                                    </div>
+                                </div>
+                                <div class="admin-stat-box">
+                                    <div class="admin-stat-icon" style="background-color: hsl(200, 85%, 95%); color: var(--color-info);"><i class="fa-solid fa-flag"></i></div>
+                                    <div class="admin-stat-vals">
+                                        <h5>Community Alerts</h5>
+                                        <div id="admin-stat-alerts-count">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h4 style="margin-bottom: 16px;">Live Activity Log</h4>
+                            <div class="admin-table-container">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>Type</th>
+                                            <th>Item Details</th>
+                                            <th>Region</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-activity-log-body">
+                                        <!-- Dynamic activity entries -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- TAB: APPROVE VOLUNTEERS -->
+                        <div class="admin-dashboard-view" id="admin-view-volunteers">
+                            <h3 style="margin-bottom: 20px;">Volunteer Approval Queue</h3>
+                            <div class="admin-table-container">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Volunteer Name</th>
+                                            <th>Location</th>
+                                            <th>Skills</th>
+                                            <th>Intro Bio</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-volunteer-queue-body">
+                                        <!-- Dynamic approval list -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- TAB: VERIFY ALERTS -->
+                        <div class="admin-dashboard-view" id="admin-view-alerts">
+                            <h3 style="margin-bottom: 20px;">Verify Community Alerts</h3>
+                            <div class="admin-table-container">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Alert Title</th>
+                                            <th>Category</th>
+                                            <th>Area</th>
+                                            <th>Reported By</th>
+                                            <th>Verification Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-alert-queue-body">
+                                        <!-- Dynamic alert list -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- TAB: MANAGE REQUESTS -->
+                        <div class="admin-dashboard-view" id="admin-view-requests">
+                            <h3 style="margin-bottom: 20px;">Manage Urgent Support Tickets</h3>
+                            <div class="admin-table-container">
+                                <table class="admin-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Request Category</th>
+                                            <th>Requester Name</th>
+                                            <th>Urgency</th>
+                                            <th>Details</th>
+                                            <th>Action Ticket</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="admin-request-queue-body">
+                                        <!-- Dynamic request tickets -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Professional Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">
+                        <i class="fa-solid fa-hands-holding-child"></i>
+                        <span>Selfless Network</span>
+                    </a>
+                    <p>Connecting volunteers across Tamil Nadu to promote humanity, environmental awareness, and instant disaster assistance.</p>
+                    <div class="footer-socials">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Navigation</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#directory">Find Volunteers</a></li>
+                        <li><a href="#alerts">Community Alerts</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-heading">Get Involved</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#register-volunteer">Become a Volunteer</a></li>
+                        <li><a href="#request-help">Submit Help Request</a></li>
+                        <li><a href="#page-admin" id="footer-admin-link">Admin Dashboard</a></li>
+                        <li><a href="#faq">Frequently Asked Questions</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Contact Details</h4>
+                    <ul class="footer-links-list" style="color: hsl(120, 5%, 70%); font-size: 14px;">
+                        <li><i class="fa-solid fa-envelope" style="color: var(--color-primary); margin-right: 6px;"></i> help@selflessnet.org</li>
+                        <li><i class="fa-solid fa-phone" style="color: var(--color-primary); margin-right: 6px;"></i> +91 44 2827 1234</li>
+                        <li><i class="fa-solid fa-location-dot" style="color: var(--color-primary); margin-right: 6px;"></i> Tamil Nadu, India</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Selfless Network. Crafted with care for humanity. All rights reserved.</p>
+                <div style="display: flex; gap: 20px;">
+                    <a href="#" style="hover: color: var(--color-primary);">Privacy Policy</a>
+                    <a href="#" style="hover: color: var(--color-primary);">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+       LOGIN & SIGN UP MODAL DIALOG
+       ========================================================================== -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal-box">
+            <button class="modal-close-btn" id="close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-tabs">
+                <button class="modal-tab-btn active" id="tab-login-btn">Log In</button>
+                <button class="modal-tab-btn" id="tab-signup-btn">Sign Up</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Log In View -->
+                <form id="login-form" class="modal-view active">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" class="form-control" placeholder="E.g., volunteer@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div style="text-align: right; font-size: 12px; margin-top: -10px;">
+                        <a href="#" id="forgot-password-link" style="color: var(--color-primary); font-weight: 500;">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                    <p class="modal-footer-msg">Don't have an account? <a href="#" id="go-to-signup">Sign Up here</a></p>
+                </form>
+
+                <!-- Sign Up View -->
+                <form id="signup-form" class="modal-view">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" class="form-control" placeholder="E.g., Priya R" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" class="form-control" placeholder="E.g., priya@gmail.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" class="form-control" minlength="6" placeholder="At least 6 characters" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-role">Role Preference</label>
+                        <select id="signup-role" class="form-control">
+                            <option value="volunteer">Volunteer (Support Others)</option>
+                            <option value="seeker">Help Seeker (Submit Requests)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                    <p class="modal-footer-msg">Already registered? <a href="#" id="go-to-login">Log In here</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div class="toast-container" id="toast-container">
+        <!-- Toast elements injected via Javascript -->
+    </div>
+
+    <!-- Firebase SDK Config & App Logic module scripts -->
+    <script type="module" src="firebase.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
