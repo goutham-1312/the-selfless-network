@@ -27,7 +27,8 @@ import {
     query, 
     where, 
     orderBy, 
-    onSnapshot 
+    onSnapshot,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // --- FIREBASE CONFIGURATION ---
@@ -77,8 +78,8 @@ const seedMockData = () => {
     if (!localStorage.getItem("sn_seeded")) {
         // Default admin and users
         const users = [
-            { id: "admin_uid", email: "admin@selfless.org", password: "adminpassword", role: "admin", name: "Super Admin" },
-            { id: "user_uid_1", email: "goutham@learner.com", password: "password123", role: "volunteer", name: "Goutham M" },
+            { id: "admin_uid", email: "goutham@selfless.com", password: "Goutham1312", role: "admin", name: "Goutham M" },
+            { id: "user_uid_1", email: "goutham@learner.com", password: "password123", role: "volunteer", name: "Goutham" },
             { id: "user_uid_2", email: "priya@gmail.com", password: "password123", role: "volunteer", name: "Priya R" }
         ];
 
@@ -638,15 +639,19 @@ const firebaseAuthService = {
     signUp: async (email, password, name, role = "volunteer") => {
         const userCredential = await createUserWithEmailAndPassword(firebaseAuth, email, password);
         const user = userCredential.user;
-        
-        // Write details inside a users collection
-        await setDoc(doc(firestore, "users", user.uid), {
-            uid: user.uid,
-            email,
-            name,
-            role,
-            createdAt: new Date().toISOString()
-        });
+
+        try {
+            await setDoc(doc(firestore, "users", user.uid), {
+                uid: user.uid,
+                email,
+                name,
+                role,
+                createdAt: serverTimestamp()
+            });
+        } catch (error) {
+            // If Firestore write fails, propagate the error so UI can show it.
+            throw new Error(`Firebase signup failed: ${error.message}`);
+        }
 
         const userData = { id: user.uid, email, name, role };
         return userData;
