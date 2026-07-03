@@ -78,7 +78,7 @@ const seedMockData = () => {
     if (!localStorage.getItem("sn_seeded")) {
         // Default admin and users
         const users = [
-            { id: "admin_uid", email: "goutham@selfless.com", password: "Goutham1312", role: "admin", name: "Goutham M" },
+            { id: "admin_uid", email: "goutham@selfless.org", password: "Goutham1312", role: "admin", name: "Goutham M" },
             { id: "user_uid_1", email: "goutham@learner.com", password: "password123", role: "volunteer", name: "Goutham" },
             { id: "user_uid_2", email: "priya@gmail.com", password: "password123", role: "volunteer", name: "Priya R" }
         ];
